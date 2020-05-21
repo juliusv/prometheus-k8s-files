@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: prometheus
-        image: prom/prometheus:v2.1.0
+        image: prom/prometheus:v2.18.1
         imagePullPolicy: IfNotPresent
         args:
         - --config.file=/etc/prometheus/prometheus.yml
@@ -27,7 +27,7 @@ spec:
         - name: config-volume
           mountPath: /etc/prometheus
       - name: watch
-        image: weaveworks/watch:master-5b2a6e5
+        image: weaveworks/watch:master-85fdf1d
         imagePullPolicy: IfNotPresent
         args: ["-v", "-t", "-p=/etc/prometheus", "curl", "-X", "POST", "--fail", "-o", "-", "-sS", "http://prometheus:9090/-/reload"]
         volumeMounts:
